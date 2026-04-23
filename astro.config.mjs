@@ -5,7 +5,7 @@ import sitemap from '@astrojs/sitemap';
 import { defineConfig } from 'astro/config';
 
 const site = process.env.SITE || 'https://kkabeming-world.github.io';
-const base = process.env.BASE_PATH || '/blog';
+const base = process.env.BASE_PATH || '/';
 
 // https://astro.build/config
 export default defineConfig({
