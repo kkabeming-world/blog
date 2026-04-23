@@ -1,0 +1,29 @@
+---
+import { getCollection } from 'astro:content';
+import PageLayout from '../../layouts/PageLayout.astro';
+
+const entries = (await getCollection('world', ({ data }) => !data.draft)).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+---
+
+<PageLayout title="월드 설정집 | 까베밍 월드" description="캐릭터와 팀 세계관 자산을 정리한 설정집">
+	<section class="section-intro">
+		<p class="eyebrow">WORLD SETTINGS</p>
+		<h1>월드 설정집</h1>
+		<p>캐릭터, 팀 역할, 관계성, 반복해서 꺼내쓸 세계관 기준을 정리하는 설정 문서 모음.</p>
+	</section>
+
+	<section class="stack-list">
+		{entries.map((entry) => (
+			<a class="card list-card" href={`/world/${entry.id}/`}>
+				<div>
+					<p class="entry-type">{entry.data.section ?? '설정'}</p>
+					<h2>{entry.data.title}</h2>
+					<p>{entry.data.description}</p>
+				</div>
+				<span class="date">{entry.data.pubDate.toLocaleDateString('ko-KR')}</span>
+			</a>
+		))}
+	</section>
+</PageLayout>

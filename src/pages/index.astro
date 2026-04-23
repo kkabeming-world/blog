@@ -1,0 +1,96 @@
+---
+import { getCollection } from 'astro:content';
+import PageLayout from '../layouts/PageLayout.astro';
+
+const [archiveEntries, worldEntries, noteEntries] = await Promise.all([
+	getCollection('archive', ({ data }) => !data.draft),
+	getCollection('world', ({ data }) => !data.draft),
+	getCollection('notes', ({ data }) => !data.draft),
+]);
+
+const latestArchive = archiveEntries.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()).slice(0, 3);
+const latestWorld = worldEntries.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()).slice(0, 2);
+const latestNotes = noteEntries.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()).slice(0, 2);
+---
+
+<PageLayout title="까베밍 월드" description="기록과 설정과 프로젝트 노트를 차곡차곡 쌓는 아카이브형 홈 화면">
+	<section class="hero card hero-card">
+		<div>
+			<p class="eyebrow">ARCHIVE BLOG</p>
+			<h1>까베밍 월드의 생활, 설정, 작업 기록을 차곡차곡 쌓아두는 곳.</h1>
+			<p class="lead">
+				까맹, 베르, 밍밍이 함께 만드는 월드 아카이브. 순간의 기록이 흩어지지 않게 모으고,
+				세계관과 프로젝트 메모까지 같은 흐름으로 정리한다.
+			</p>
+		</div>
+		<div class="hero-meta">
+			<div>
+				<strong>{archiveEntries.length}</strong>
+				<span>archive entries</span>
+			</div>
+			<div>
+				<strong>{worldEntries.length}</strong>
+				<span>world setting notes</span>
+			</div>
+			<div>
+				<strong>{noteEntries.length}</strong>
+				<span>project notes</span>
+			</div>
+		</div>
+	</section>
+
+	<section class="grid two-up section-gap">
+		<a class="card feature-card" href="/archive">
+			<p class="eyebrow">HOME / ARCHIVE</p>
+			<h2>아카이브</h2>
+			<p>일상 기록, 에피소드, 기념일, 팀의 흐름을 시간순으로 쌓아두는 메인 저장소.</p>
+		</a>
+		<a class="card feature-card" href="/world">
+			<p class="eyebrow">HOME / WORLD SETTINGS</p>
+			<h2>월드 설정집</h2>
+			<p>캐릭터, 관계, 팀 역할, 반복되는 장면과 세계관 자산을 정리하는 설정 문서 묶음.</p>
+		</a>
+		<a class="card feature-card" href="/notes">
+			<p class="eyebrow">HOME / PROJECT NOTES</p>
+			<h2>프로젝트 노트</h2>
+			<p>콘텐츠 운영, 블로그 세팅, 시리즈 기획 같은 작업 메모와 진행 로그.</p>
+		</a>
+		<div class="card feature-card soft-card">
+			<p class="eyebrow">GUIDING SHAPE</p>
+			<h2>기록 아카이브형 구조</h2>
+			<p>한 번 쓰고 흘리는 블로그가 아니라, 꺼내보고 다시 이어붙일 수 있는 팀 아카이브를 목표로 둔다.</p>
+		</div>
+	</section>
+
+	<section class="section-gap">
+		<div class="section-header">
+			<div>
+				<p class="eyebrow">LATEST</p>
+				<h2>첫 화면에서 바로 보이는 최신 기록</h2>
+			</div>
+		</div>
+		<div class="grid three-up">
+			{latestArchive.map((entry) => (
+				<a class="card entry-card" href={`/archive/${entry.id}/`}>
+					<p class="entry-type">아카이브</p>
+					<h3>{entry.data.title}</h3>
+					<p>{entry.data.description}</p>
+				</a>
+			))}
+			{latestWorld.map((entry) => (
+				<a class="card entry-card" href={`/world/${entry.id}/`}>
+					<p class="entry-type">월드 설정집</p>
+					<h3>{entry.data.title}</h3>
+					<p>{entry.data.description}</p>
+				</a>
+			))}
+			{latestNotes.map((entry) => (
+				<a class="card entry-card" href={`/notes/${entry.id}/`}>
+					<p class="entry-type">프로젝트 노트</p>
+					<h3>{entry.data.title}</h3>
+					<p>{entry.data.description}</p>
+				</a>
+			))}
+		</div>
+	</section>
+</PageLayout>

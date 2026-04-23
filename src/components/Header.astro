@@ -1,0 +1,94 @@
+---
+import { SITE_TITLE } from '../consts';
+import HeaderLink from './HeaderLink.astro';
+---
+
+<header>
+	<nav>
+		<div class="brand">
+			<p class="brand-kicker">KKABEMING WORLD ARCHIVE</p>
+			<h2><a href="/">{SITE_TITLE}</a></h2>
+		</div>
+		<div class="internal-links">
+			<HeaderLink href="/">홈</HeaderLink>
+			<HeaderLink href="/archive">아카이브</HeaderLink>
+			<HeaderLink href="/world">월드 설정집</HeaderLink>
+			<HeaderLink href="/notes">프로젝트 노트</HeaderLink>
+		</div>
+	</nav>
+</header>
+<style>
+	header {
+		position: sticky;
+		top: 0;
+		z-index: 10;
+		margin: 0;
+		padding: 0 1.25rem;
+		backdrop-filter: blur(12px);
+		background: rgba(255, 252, 248, 0.84);
+		border-bottom: 1px solid rgba(var(--gray), 0.15);
+	}
+
+	nav {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1.5rem;
+		max-width: 1120px;
+		margin: 0 auto;
+		padding: 1rem 0;
+	}
+
+	.brand {
+		display: grid;
+		gap: 0.2rem;
+	}
+
+	.brand-kicker {
+		margin: 0;
+		font-size: 0.68rem;
+		letter-spacing: 0.16em;
+		color: rgb(var(--gray));
+	}
+
+	h2 {
+		margin: 0;
+		font-size: 1.05rem;
+	}
+
+	h2 a,
+	h2 a.active {
+		text-decoration: none;
+		color: rgb(var(--black));
+	}
+
+	.internal-links {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: flex-end;
+	}
+
+	nav a {
+		padding: 0.8rem 0.7rem;
+		color: rgb(var(--gray-dark));
+		border-bottom: 3px solid transparent;
+		text-decoration: none;
+		font-size: 0.95rem;
+	}
+
+	nav a.active {
+		border-bottom-color: var(--accent);
+		color: var(--accent);
+	}
+
+	@media (max-width: 820px) {
+		nav {
+			align-items: flex-start;
+			flex-direction: column;
+		}
+
+		.internal-links {
+			justify-content: flex-start;
+		}
+	}
+</style>

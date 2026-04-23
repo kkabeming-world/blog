@@ -1,0 +1,41 @@
+---
+const today = new Date();
+---
+
+<footer>
+	<div class="footer-inner">
+		<p class="title">까베밍 월드 아카이브</p>
+		<p class="description">생활 기록, 세계관 설정, 프로젝트 메모를 오래 쌓아두는 팀 블로그.</p>
+		<p class="meta">&copy; {today.getFullYear()} Kkabeming World. Built with Astro for a calm, static GitHub-ready archive.</p>
+	</div>
+</footer>
+<style>
+	footer {
+		padding: 3rem 1.25rem 5rem;
+		margin-top: 4rem;
+		border-top: 1px solid rgba(var(--gray), 0.16);
+		background: rgba(255, 252, 248, 0.72);
+	}
+
+	.footer-inner {
+		max-width: 1120px;
+		margin: 0 auto;
+		text-align: center;
+		color: rgb(var(--gray));
+	}
+
+	.title {
+		margin: 0;
+		font-size: 1rem;
+		color: rgb(var(--gray-dark));
+	}
+
+	.description {
+		margin: 0.6rem 0;
+	}
+
+	.meta {
+		margin: 0;
+		font-size: 0.95rem;
+	}
+</style>

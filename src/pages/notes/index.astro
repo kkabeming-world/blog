@@ -1,0 +1,29 @@
+---
+import { getCollection } from 'astro:content';
+import PageLayout from '../../layouts/PageLayout.astro';
+
+const entries = (await getCollection('notes', ({ data }) => !data.draft)).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+---
+
+<PageLayout title="프로젝트 노트 | 까베밍 월드" description="콘텐츠와 운영 작업 흐름을 쌓아두는 프로젝트 노트">
+	<section class="section-intro">
+		<p class="eyebrow">PROJECT NOTES</p>
+		<h1>프로젝트 노트</h1>
+		<p>블로그, 인스타 시리즈, 운영 실험, 구조 정리 같은 작업 메모와 진행 기록을 모아둔다.</p>
+	</section>
+
+	<section class="stack-list">
+		{entries.map((entry) => (
+			<a class="card list-card" href={`/notes/${entry.id}/`}>
+				<div>
+					<p class="entry-type">{entry.data.project ?? '노트'}</p>
+					<h2>{entry.data.title}</h2>
+					<p>{entry.data.description}</p>
+				</div>
+				<span class="date">{entry.data.pubDate.toLocaleDateString('ko-KR')}</span>
+			</a>
+		))}
+	</section>
+</PageLayout>
