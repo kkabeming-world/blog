@@ -26,11 +26,21 @@ const latestNotes = noteEntries.sort((a, b) => b.data.pubDate.valueOf() - a.data
 			<p class="hero-note">
 				사소한 하루도 기록이 되고, 기록은 결국 까베밍 월드의 분위기가 된다.
 			</p>
+			<div class="brand-card card">
+				<p class="brand-card-kicker">brand note</p>
+				<h2>생활감, 관계성, 팀의 흐름이 모이는 아카이브.</h2>
+				<p>까베밍 월드는 셋의 하루와 세계관을 함께 기록하는 팀 블로그다.</p>
+			</div>
 		</div>
 		<div class="hero-visual card">
 			<div class="visual-badge">KKABEMING WORLD</div>
 			<div class="visual-orbit visual-orbit-a"></div>
 			<div class="visual-orbit visual-orbit-b"></div>
+			<div class="visual-stars">
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
 			<div class="visual-core">
 				<span>까맹</span>
 				<span>베르</span>
@@ -58,22 +68,22 @@ const latestNotes = noteEntries.sort((a, b) => b.data.pubDate.valueOf() - a.data
 		<a class="card feature-card" href="/archive">
 			<p class="eyebrow">ARCHIVE</p>
 			<h2>아카이브</h2>
-			<p>일상과 에피소드를 시간순으로 쌓아두는 메인 기록 저장소.</p>
+			<p>일상과 에피소드를 시간순으로 쌓는 메인 기록 저장소.</p>
 		</a>
 		<a class="card feature-card" href="/world">
 			<p class="eyebrow">WORLD SETTINGS</p>
 			<h2>월드 설정집</h2>
-			<p>캐릭터와 관계, 반복되는 장면의 기준을 모아둔 설정 묶음.</p>
+			<p>캐릭터와 관계의 기준을 모아두는 설정 묶음.</p>
 		</a>
 		<a class="card feature-card" href="/notes">
 			<p class="eyebrow">PROJECT NOTES</p>
 			<h2>프로젝트 노트</h2>
-			<p>운영과 기획, 세팅 과정을 남기는 작업 메모 공간.</p>
+			<p>운영과 기획, 세팅 과정을 남기는 작업 메모.</p>
 		</a>
 		<div class="card feature-card soft-card">
 			<p class="eyebrow">ARCHIVE MOOD</p>
 			<h2>기록 아카이브형 구조</h2>
-			<p>한 번 보고 끝나는 포스트보다 다시 꺼내 이어볼 수 있는 기록을 우선한다.</p>
+			<p>다시 꺼내 이어볼 수 있는 기록을 우선한다.</p>
 		</div>
 	</section>
 
@@ -94,6 +104,7 @@ const latestNotes = noteEntries.sort((a, b) => b.data.pubDate.valueOf() - a.data
 					</div>
 					<h3>{entry.data.title}</h3>
 					<p>{entry.data.description}</p>
+					<span class="entry-link">기록 읽기</span>
 				</a>
 			))}
 			{latestWorld.map((entry) => (
@@ -104,6 +115,7 @@ const latestNotes = noteEntries.sort((a, b) => b.data.pubDate.valueOf() - a.data
 					</div>
 					<h3>{entry.data.title}</h3>
 					<p>{entry.data.description}</p>
+					<span class="entry-link">설정 보기</span>
 				</a>
 			))}
 			{latestNotes.map((entry) => (
@@ -114,6 +126,7 @@ const latestNotes = noteEntries.sort((a, b) => b.data.pubDate.valueOf() - a.data
 					</div>
 					<h3>{entry.data.title}</h3>
 					<p>{entry.data.description}</p>
+					<span class="entry-link">노트 보기</span>
 				</a>
 			))}
 		</div>
