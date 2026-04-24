@@ -18,6 +18,8 @@ const { Content } = await render(entry);
 	updatedDate={entry.data.updatedDate}
 	tags={entry.data.tags}
 	sectionLabel={entry.data.category ?? '아카이브'}
+	coverImage={entry.data.coverImage}
+	coverAlt={entry.data.coverAlt}
 >
 	<Content />
 </EntryLayout>

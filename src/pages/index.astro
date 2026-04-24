@@ -92,37 +92,65 @@ const latestNotes = noteEntries.sort((a, b) => b.data.pubDate.valueOf() - a.data
 		<div class="grid three-up">
 			{latestArchive.map((entry) => (
 				<a class="card entry-card" href={`/archive/${entry.id}/`}>
-					<div class="entry-card-top">
-						<p class="entry-type">아카이브</p>
-						<p class="entry-date"><FormattedDateShort date={entry.data.pubDate} /></p>
+					{entry.data.coverImage && <img class="entry-card-image" src={entry.data.coverImage} alt={entry.data.coverAlt ?? entry.data.title} />}
+					<div class="entry-card-body">
+						<div class="entry-card-top">
+							<p class="entry-type">아카이브</p>
+							<p class="entry-date"><FormattedDateShort date={entry.data.pubDate} /></p>
+						</div>
+						<h3>{entry.data.title}</h3>
+						<p>{entry.data.description}</p>
+						<span class="entry-link">기록 읽기</span>
 					</div>
-					<h3>{entry.data.title}</h3>
-					<p>{entry.data.description}</p>
-					<span class="entry-link">기록 읽기</span>
 				</a>
 			))}
 			{latestWorld.map((entry) => (
 				<a class="card entry-card" href={`/world/${entry.id}/`}>
-					<div class="entry-card-top">
-						<p class="entry-type">월드 설정집</p>
-						<p class="entry-date"><FormattedDateShort date={entry.data.pubDate} /></p>
+					{entry.data.coverImage && <img class="entry-card-image" src={entry.data.coverImage} alt={entry.data.coverAlt ?? entry.data.title} />}
+					<div class="entry-card-body">
+						<div class="entry-card-top">
+							<p class="entry-type">월드 설정집</p>
+							<p class="entry-date"><FormattedDateShort date={entry.data.pubDate} /></p>
+						</div>
+						<h3>{entry.data.title}</h3>
+						<p>{entry.data.description}</p>
+						<span class="entry-link">설정 보기</span>
 					</div>
-					<h3>{entry.data.title}</h3>
-					<p>{entry.data.description}</p>
-					<span class="entry-link">설정 보기</span>
 				</a>
 			))}
 			{latestNotes.map((entry) => (
 				<a class="card entry-card" href={`/notes/${entry.id}/`}>
-					<div class="entry-card-top">
-						<p class="entry-type">프로젝트 노트</p>
-						<p class="entry-date"><FormattedDateShort date={entry.data.pubDate} /></p>
+					{entry.data.coverImage && <img class="entry-card-image" src={entry.data.coverImage} alt={entry.data.coverAlt ?? entry.data.title} />}
+					<div class="entry-card-body">
+						<div class="entry-card-top">
+							<p class="entry-type">프로젝트 노트</p>
+							<p class="entry-date"><FormattedDateShort date={entry.data.pubDate} /></p>
+						</div>
+						<h3>{entry.data.title}</h3>
+						<p>{entry.data.description}</p>
+						<span class="entry-link">노트 보기</span>
 					</div>
-					<h3>{entry.data.title}</h3>
-					<p>{entry.data.description}</p>
-					<span class="entry-link">노트 보기</span>
 				</a>
 			))}
 		</div>
 	</section>
 </PageLayout>
+
+<style>
+	.entry-card {
+		overflow: hidden;
+		padding: 0;
+	}
+
+	.entry-card-image {
+		display: block;
+		width: 100%;
+		aspect-ratio: 16 / 9;
+		object-fit: cover;
+		border-bottom: 1px solid rgb(var(--gray-light));
+	}
+
+	.entry-card-body {
+		padding: 1.25rem;
+	}
+</style>

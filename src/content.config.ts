@@ -10,6 +10,8 @@ const baseSchema = z.object({
 	draft: z.boolean().default(false),
 	tags: z.array(z.string()).default([]),
 	category: z.string().optional(),
+	coverImage: z.string().optional(),
+	coverAlt: z.string().optional(),
 });
 
 const archive = defineCollection({

@@ -18,6 +18,8 @@ const { Content } = await render(entry);
 	updatedDate={entry.data.updatedDate}
 	tags={entry.data.tags}
 	sectionLabel={entry.data.project ?? '프로젝트 노트'}
+	coverImage={entry.data.coverImage}
+	coverAlt={entry.data.coverAlt}
 >
 	<Content />
 </EntryLayout>

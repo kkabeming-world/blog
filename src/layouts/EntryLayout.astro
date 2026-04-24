@@ -12,20 +12,27 @@ interface Props {
 	updatedDate?: Date;
 	tags?: string[];
 	sectionLabel?: string;
+	coverImage?: string;
+	coverAlt?: string;
 }
 
-const { title, description, pubDate, updatedDate, tags = [], sectionLabel } = Astro.props;
+const { title, description, pubDate, updatedDate, tags = [], sectionLabel, coverImage, coverAlt } = Astro.props;
 ---
 
 <html lang="ko">
 	<head>
-		<BaseHead title={title} description={description} />
+		<BaseHead title={title} description={description} image={coverImage} />
 	</head>
 	<body>
 		<Header />
 		<main>
 			<article class="entry">
 				<div class="entry-header">
+					{coverImage && (
+						<div class="cover-wrap">
+							<img class="cover-image" src={coverImage} alt={coverAlt ?? title} />
+						</div>
+					)}
 					{sectionLabel && <p class="eyebrow">{sectionLabel}</p>}
 					<h1>{title}</h1>
 					<p class="description">{description}</p>
@@ -74,6 +81,19 @@ const { title, description, pubDate, updatedDate, tags = [], sectionLabel } = As
 
 	h1 {
 		margin-bottom: 0.75rem;
+	}
+
+	.cover-wrap {
+		margin: -0.5rem -0.5rem 1.5rem;
+	}
+
+	.cover-image {
+		display: block;
+		width: 100%;
+		aspect-ratio: 16 / 9;
+		object-fit: cover;
+		border-radius: 20px;
+		border: 1px solid rgb(var(--gray-light));
 	}
 
 	.description {
