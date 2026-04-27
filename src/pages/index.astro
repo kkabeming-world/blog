@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import FormattedDateShort from '../components/FormattedDateShort.astro';
 import PageLayout from '../layouts/PageLayout.astro';
+import { withBase } from '../utils/withBase';
 
 const [archiveEntries, worldEntries, noteEntries] = await Promise.all([
 	getCollection('archive', ({ data }) => !data.draft),
@@ -9,7 +10,7 @@ const [archiveEntries, worldEntries, noteEntries] = await Promise.all([
 	getCollection('notes', ({ data }) => !data.draft),
 ]);
 
-const latestArchive = archiveEntries.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()).slice(0, 3);
+const latestArchive = archiveEntries.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()).slice(0, 2);
 const latestWorld = worldEntries.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()).slice(0, 2);
 const latestNotes = noteEntries.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()).slice(0, 2);
 ---
@@ -33,8 +34,11 @@ const latestNotes = noteEntries.sort((a, b) => b.data.pubDate.valueOf() - a.data
 			</div>
 		</div>
 		<div class="hero-visual card">
-			<div class="visual-badge">KKABEMING WORLD</div>
-			<img class="hero-banner-image" src="/images/home-banner.jpg" alt="따뜻한 책상 위에 모여 있는 까맹, 베르, 밍밍의 홈 배너 이미지" />
+			<div class="visual-badge">까베밍 월드</div>
+			<div class="hero-banner-placeholder" role="img" aria-label="추후 실제 홈 배너 이미지가 들어올 자리">
+				<div class="placeholder-badge">배너 자리</div>
+				<p>이따 짤라줄 실제 배너가 들어오면 바로 교체할 수 있게 미리 자리만 잡아둠.</p>
+			</div>
 			<div class="visual-core">
 				<span>까맹</span>
 				<span>베르</span>
@@ -59,18 +63,18 @@ const latestNotes = noteEntries.sort((a, b) => b.data.pubDate.valueOf() - a.data
 	</section>
 
 	<section class="grid two-up section-gap">
-		<a class="card feature-card" href="/archive">
-			<p class="eyebrow">ARCHIVE</p>
+		<a class="card feature-card" href={withBase('archive')}>
+			<p class="eyebrow">생활 아카이브</p>
 			<h2>아카이브</h2>
 			<p>일상과 에피소드를 시간순으로 쌓는 메인 기록 저장소.</p>
 		</a>
-		<a class="card feature-card" href="/world">
-			<p class="eyebrow">WORLD SETTINGS</p>
+		<a class="card feature-card" href={withBase('world')}>
+			<p class="eyebrow">월드 설정</p>
 			<h2>월드 설정집</h2>
 			<p>캐릭터와 관계의 기준을 모아두는 설정 묶음.</p>
 		</a>
-		<a class="card feature-card" href="/notes">
-			<p class="eyebrow">PROJECT NOTES</p>
+		<a class="card feature-card" href={withBase('notes')}>
+			<p class="eyebrow">작업 노트</p>
 			<h2>프로젝트 노트</h2>
 			<p>운영과 기획, 세팅 과정을 남기는 작업 메모.</p>
 		</a>
@@ -86,57 +90,83 @@ const latestNotes = noteEntries.sort((a, b) => b.data.pubDate.valueOf() - a.data
 			<div>
 				<p class="eyebrow">최신 기록</p>
 				<h2>첫 화면에서 바로 보이는 최신 기록</h2>
-				<p class="section-copy">날짜와 요약이 함께 보여서 기록이 차곡차곡 쌓이는 감각을 더 또렷하게 만든다.</p>
+				<p class="section-copy">
+					섹션별로 최신 두 편씩 묶어 그리드가 한 줄에서 균형 있게 보이도록 했다. 전체 목록은 각 아카이브·월드·노트 페이지에서 이어진다.
+				</p>
 			</div>
 		</div>
-		<div class="grid three-up">
-			{latestArchive.map((entry) => (
-				<a class="card entry-card" href={`/archive/${entry.id}/`}>
-					{entry.data.coverImage && <img class="entry-card-image" src={entry.data.coverImage} alt={entry.data.coverAlt ?? entry.data.title} />}
-					<div class="entry-card-body">
-						<div class="entry-card-top">
-							<p class="entry-type">아카이브</p>
-							<p class="entry-date"><FormattedDateShort date={entry.data.pubDate} /></p>
-						</div>
-						<h3>{entry.data.title}</h3>
-						<p>{entry.data.description}</p>
-						<span class="entry-link">기록 읽기</span>
-					</div>
-				</a>
-			))}
-			{latestWorld.map((entry) => (
-				<a class="card entry-card" href={`/world/${entry.id}/`}>
-					{entry.data.coverImage && <img class="entry-card-image" src={entry.data.coverImage} alt={entry.data.coverAlt ?? entry.data.title} />}
-					<div class="entry-card-body">
-						<div class="entry-card-top">
-							<p class="entry-type">월드 설정집</p>
-							<p class="entry-date"><FormattedDateShort date={entry.data.pubDate} /></p>
-						</div>
-						<h3>{entry.data.title}</h3>
-						<p>{entry.data.description}</p>
-						<span class="entry-link">설정 보기</span>
-					</div>
-				</a>
-			))}
-			{latestNotes.map((entry) => (
-				<a class="card entry-card" href={`/notes/${entry.id}/`}>
-					{entry.data.coverImage && <img class="entry-card-image" src={entry.data.coverImage} alt={entry.data.coverAlt ?? entry.data.title} />}
-					<div class="entry-card-body">
-						<div class="entry-card-top">
-							<p class="entry-type">프로젝트 노트</p>
-							<p class="entry-date"><FormattedDateShort date={entry.data.pubDate} /></p>
-						</div>
-						<h3>{entry.data.title}</h3>
-						<p>{entry.data.description}</p>
-						<span class="entry-link">노트 보기</span>
-					</div>
-				</a>
-			))}
+		<div class="latest-feed">
+			<div class="latest-block">
+				<p class="eyebrow latest-block-kicker">아카이브</p>
+				<div class="grid two-up">
+					{latestArchive.map((entry) => (
+						<a class="card entry-card" href={withBase(`archive/${entry.id}/`)}>
+							{entry.data.coverImage && <img class="entry-card-image" src={entry.data.coverImage} alt={entry.data.coverAlt ?? entry.data.title} />}
+							<div class="entry-card-body">
+								<div class="entry-card-top">
+									<p class="entry-type">아카이브</p>
+									<p class="entry-date"><FormattedDateShort date={entry.data.pubDate} /></p>
+								</div>
+								<h3>{entry.data.title}</h3>
+								<p>{entry.data.description}</p>
+								<span class="entry-link">기록 읽기</span>
+							</div>
+						</a>
+					))}
+				</div>
+			</div>
+			<div class="latest-block">
+				<p class="eyebrow latest-block-kicker">월드 설정집</p>
+				<div class="grid two-up">
+					{latestWorld.map((entry) => (
+						<a class="card entry-card" href={withBase(`world/${entry.id}/`)}>
+							{entry.data.coverImage && <img class="entry-card-image" src={entry.data.coverImage} alt={entry.data.coverAlt ?? entry.data.title} />}
+							<div class="entry-card-body">
+								<div class="entry-card-top">
+									<p class="entry-type">월드 설정집</p>
+									<p class="entry-date"><FormattedDateShort date={entry.data.pubDate} /></p>
+								</div>
+								<h3>{entry.data.title}</h3>
+								<p>{entry.data.description}</p>
+								<span class="entry-link">설정 보기</span>
+							</div>
+						</a>
+					))}
+				</div>
+			</div>
+			<div class="latest-block">
+				<p class="eyebrow latest-block-kicker">프로젝트 노트</p>
+				<div class="grid two-up">
+					{latestNotes.map((entry) => (
+						<a class="card entry-card" href={withBase(`notes/${entry.id}/`)}>
+							{entry.data.coverImage && <img class="entry-card-image" src={entry.data.coverImage} alt={entry.data.coverAlt ?? entry.data.title} />}
+							<div class="entry-card-body">
+								<div class="entry-card-top">
+									<p class="entry-type">프로젝트 노트</p>
+									<p class="entry-date"><FormattedDateShort date={entry.data.pubDate} /></p>
+								</div>
+								<h3>{entry.data.title}</h3>
+								<p>{entry.data.description}</p>
+								<span class="entry-link">노트 보기</span>
+							</div>
+						</a>
+					))}
+				</div>
+			</div>
 		</div>
 	</section>
 </PageLayout>
 
 <style>
+	.latest-feed {
+		display: grid;
+		gap: 2.25rem;
+	}
+
+	.latest-block-kicker {
+		margin-bottom: 0.85rem;
+	}
+
 	.entry-card {
 		overflow: hidden;
 		padding: 0;

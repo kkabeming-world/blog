@@ -1,12 +1,25 @@
 ---
 import type { HTMLAttributes } from 'astro/types';
+import { withBase } from '../utils/withBase';
 
 type Props = HTMLAttributes<'a'>;
 
-const { href, class: className, ...props } = Astro.props;
-const pathname = Astro.url.pathname.replace(import.meta.env.BASE_URL, '');
-const subpath = pathname.match(/[^\/]+/g);
-const isActive = href === pathname || href === '/' + (subpath?.[0] || '');
+const { href: hrefProp, class: className, ...props } = Astro.props;
+
+const href =
+	typeof hrefProp === 'string' && (hrefProp.startsWith('http://') || hrefProp.startsWith('https://'))
+		? hrefProp
+		: withBase(String(hrefProp ?? '').replace(/^\//, ''));
+
+function normalizePath(path: string): string {
+	const t = path.replace(/\/+$/, '');
+	return t || '/';
+}
+
+const current = normalizePath(Astro.url.pathname);
+const dest = normalizePath(new URL(href, Astro.url.origin).pathname);
+const home = normalizePath(new URL(import.meta.env.BASE_URL, Astro.url.origin).pathname);
+const isActive = dest === current || (dest !== home && current.startsWith(`${dest}/`));
 ---
 
 <a href={href} class:list={[className, { active: isActive }]} {...props}>

@@ -5,6 +5,7 @@ import '../styles/global.css';
 import type { ImageMetadata } from 'astro';
 import FallbackImage from '../assets/blog-placeholder-1.jpg';
 import { SITE_TITLE } from '../consts';
+import { withBase } from '../utils/withBase';
 
 interface Props {
 	title: string;
@@ -13,23 +14,22 @@ interface Props {
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const pageUrl = canonicalURL.href;
 
 const { title, description, image = FallbackImage } = Astro.props;
 const imageSrc = typeof image === 'string' ? image : image.src;
+const ogImageUrl = new URL(imageSrc, Astro.site ?? Astro.url).href;
+const rssBase = Astro.site ?? `${Astro.url.origin}/`;
+const rssHref = new URL(withBase('rss.xml'), rssBase).href;
 ---
 
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<link rel="icon" href="/favicon.ico" />
-<link rel="sitemap" href="/sitemap-index.xml" />
-<link
-	rel="alternate"
-	type="application/rss+xml"
-	title={SITE_TITLE}
-	href={new URL('rss.xml', Astro.site)}
-/>
+<link rel="icon" type="image/svg+xml" href={withBase('favicon.svg')} />
+<link rel="icon" href={withBase('favicon.ico')} />
+<link rel="sitemap" href={withBase('sitemap-index.xml')} />
+<link rel="alternate" type="application/rss+xml" title={SITE_TITLE} href={rssHref} />
 <meta name="generator" content={Astro.generator} />
 
 <!-- Canonical URL -->
@@ -42,14 +42,14 @@ const imageSrc = typeof image === 'string' ? image : image.src;
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
-<meta property="og:url" content={Astro.url} />
+<meta property="og:url" content={pageUrl} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:image" content={new URL(imageSrc, Astro.url)} />
+<meta property="og:image" content={ogImageUrl} />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content={Astro.url} />
+<meta property="twitter:url" content={pageUrl} />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={new URL(imageSrc, Astro.url)} />
+<meta property="twitter:image" content={ogImageUrl} />
