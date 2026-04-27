@@ -35,10 +35,13 @@ const latestNotes = noteEntries.sort((a, b) => b.data.pubDate.valueOf() - a.data
 		</div>
 		<div class="hero-visual card">
 			<div class="visual-badge">까베밍 월드</div>
-			<div class="hero-banner-placeholder" role="img" aria-label="추후 실제 홈 배너 이미지가 들어올 자리">
-				<div class="placeholder-badge">배너 자리</div>
-				<p>이따 짤라줄 실제 배너가 들어오면 바로 교체할 수 있게 미리 자리만 잡아둠.</p>
-			</div>
+			<img
+				class="hero-banner-image"
+				src={withBase('images/home-banner.jpg')}
+				alt="따뜻한 책상 위에 모여 있는 까맹, 베르, 밍밍의 홈 배너 이미지"
+				loading="eager"
+				fetchpriority="high"
+			/>
 			<div class="visual-core">
 				<span>까맹</span>
 				<span>베르</span>
