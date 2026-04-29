@@ -1,0 +1,96 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">늦은 밤 작업 책상 위에서 worklog와 운영 메모를 다시 이어 붙이는 장면</title>
+  <desc id="desc">따뜻한 스탠드 조명 아래 모니터, 메모 카드, 타임라인, 세 고양이 팀의 흔적이 놓인 까베밍 월드 블로그용 배너 이미지</desc>
+  <defs>
+    <linearGradient id="bg" x1="220" y1="80" x2="1320" y2="820" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1A2A3B"/>
+      <stop offset="1" stop-color="#0D1622"/>
+    </linearGradient>
+    <linearGradient id="desk" x1="260" y1="560" x2="1330" y2="860" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#6F4F3C"/>
+      <stop offset="1" stop-color="#4D3427"/>
+    </linearGradient>
+    <linearGradient id="screen" x1="540" y1="210" x2="1030" y2="500" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#284861"/>
+      <stop offset="1" stop-color="#132736"/>
+    </linearGradient>
+    <radialGradient id="lampGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1160 190) rotate(119.536) scale(430 540)">
+      <stop stop-color="#FFD8A6" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#FFD8A6" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="soft" x="0" y="0" width="1600" height="900" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="28"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <ellipse cx="1130" cy="220" rx="360" ry="290" fill="url(#lampGlow)"/>
+  <ellipse cx="330" cy="770" rx="360" ry="50" fill="#08111A" opacity="0.45" filter="url(#soft)"/>
+  <ellipse cx="1220" cy="780" rx="360" ry="60" fill="#08111A" opacity="0.5" filter="url(#soft)"/>
+
+  <rect x="170" y="560" width="1260" height="250" rx="22" fill="url(#desk)"/>
+  <rect x="220" y="590" width="1160" height="18" rx="9" fill="#8B6A54" opacity="0.55"/>
+
+  <rect x="470" y="180" width="620" height="360" rx="24" fill="#162533"/>
+  <rect x="510" y="220" width="540" height="280" rx="18" fill="url(#screen)"/>
+  <rect x="705" y="540" width="150" height="24" rx="12" fill="#192734"/>
+  <rect x="655" y="564" width="250" height="20" rx="10" fill="#31495E"/>
+
+  <rect x="560" y="258" width="120" height="18" rx="9" fill="#8BD0D9" opacity="0.95"/>
+  <rect x="560" y="292" width="330" height="12" rx="6" fill="#D7E7EC" opacity="0.9"/>
+  <rect x="560" y="318" width="290" height="12" rx="6" fill="#D7E7EC" opacity="0.72"/>
+  <rect x="560" y="344" width="355" height="12" rx="6" fill="#D7E7EC" opacity="0.62"/>
+  <rect x="560" y="384" width="170" height="72" rx="16" fill="#244357"/>
+  <rect x="750" y="384" width="262" height="72" rx="16" fill="#1E3343"/>
+  <circle cx="602" cy="420" r="12" fill="#7AD7A8"/>
+  <rect x="626" y="412" width="74" height="14" rx="7" fill="#CEE7D8"/>
+  <circle cx="792" cy="420" r="12" fill="#F0B56E"/>
+  <rect x="816" y="412" width="132" height="14" rx="7" fill="#EFE3D1"/>
+
+  <rect x="1110" y="280" width="220" height="160" rx="20" fill="#F3E6D2"/>
+  <rect x="1140" y="316" width="108" height="12" rx="6" fill="#6E6053" opacity="0.85"/>
+  <rect x="1140" y="346" width="140" height="10" rx="5" fill="#8E8174" opacity="0.55"/>
+  <rect x="1140" y="372" width="126" height="10" rx="5" fill="#8E8174" opacity="0.55"/>
+  <rect x="1140" y="398" width="88" height="10" rx="5" fill="#8E8174" opacity="0.55"/>
+  <path d="M1285 286L1318 318" stroke="#E4B86B" stroke-width="12" stroke-linecap="round"/>
+
+  <rect x="290" y="620" width="250" height="150" rx="18" fill="#F5ECDD"/>
+  <rect x="322" y="652" width="128" height="12" rx="6" fill="#6F6257" opacity="0.9"/>
+  <rect x="322" y="684" width="176" height="10" rx="5" fill="#A19385" opacity="0.7"/>
+  <rect x="322" y="708" width="152" height="10" rx="5" fill="#A19385" opacity="0.7"/>
+  <rect x="322" y="732" width="110" height="10" rx="5" fill="#A19385" opacity="0.7"/>
+  <circle cx="488" cy="650" r="20" fill="#F0C979"/>
+
+  <rect x="570" y="645" width="240" height="120" rx="18" fill="#E9F0F2"/>
+  <path d="M606 708H770" stroke="#5A7990" stroke-width="10" stroke-linecap="round" stroke-dasharray="1 22"/>
+  <circle cx="634" cy="708" r="11" fill="#7AD7A8"/>
+  <circle cx="690" cy="708" r="11" fill="#F0B56E"/>
+  <circle cx="746" cy="708" r="11" fill="#8BD0D9"/>
+  <rect x="606" y="670" width="104" height="12" rx="6" fill="#355368"/>
+  <rect x="606" y="736" width="130" height="10" rx="5" fill="#7F9AAD" opacity="0.8"/>
+
+  <rect x="1040" y="620" width="190" height="130" rx="18" fill="#F4E9D8"/>
+  <rect x="1072" y="654" width="96" height="12" rx="6" fill="#6C625B" opacity="0.9"/>
+  <rect x="1072" y="686" width="126" height="10" rx="5" fill="#9A8F87" opacity="0.7"/>
+  <rect x="1072" y="710" width="112" height="10" rx="5" fill="#9A8F87" opacity="0.7"/>
+
+  <g opacity="0.96">
+    <path d="M918 662C918 642 933 626 953 626C969 626 983 637 987 652C1001 656 1012 668 1012 684C1012 703 997 718 978 718H943C923 718 908 702 908 682C908 672 912 666 918 662Z" fill="#2B3946"/>
+    <circle cx="934" cy="632" r="12" fill="#2B3946"/>
+    <circle cx="970" cy="632" r="12" fill="#2B3946"/>
+  </g>
+  <g opacity="0.95">
+    <path d="M1256 708C1256 690 1270 676 1288 676C1301 676 1312 685 1316 697C1329 700 1338 710 1338 724C1338 741 1325 754 1308 754H1279C1261 754 1248 741 1248 723C1248 716 1251 711 1256 708Z" fill="#EFE7DB"/>
+    <circle cx="1271" cy="681" r="10" fill="#EFE7DB"/>
+    <circle cx="1304" cy="681" r="10" fill="#EFE7DB"/>
+  </g>
+  <g opacity="0.94">
+    <path d="M870 748C870 733 882 720 897 720C909 720 919 728 923 739C934 742 942 751 942 763C942 777 931 788 917 788H893C878 788 866 776 866 761C866 756 867 751 870 748Z" fill="#C49A6C"/>
+    <circle cx="882" cy="724" r="9" fill="#C49A6C"/>
+    <circle cx="911" cy="724" r="9" fill="#C49A6C"/>
+  </g>
+
+  <path d="M1132 124C1146 100 1172 86 1198 86C1234 86 1263 116 1263 152V340" stroke="#2A323C" stroke-width="18" stroke-linecap="round"/>
+  <path d="M1227 166C1256 166 1280 189 1280 218C1280 246 1256 269 1227 269C1198 269 1174 246 1174 218C1174 189 1198 166 1227 166Z" fill="#F6D4A0"/>
+  <circle cx="1227" cy="218" r="78" fill="#FFD8A6" opacity="0.32"/>
+</svg>
