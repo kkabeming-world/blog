@@ -23,9 +23,18 @@ const entries = (await getCollection('notes', ({ data }) => !data.draft)).sort(
 					<p class="entry-type">{entry.data.project ?? '노트'}</p>
 					<h2>{entry.data.title}</h2>
 					<p>{entry.data.description}</p>
+					<p class="entry-meta">글쓴이 {entry.data.author ?? '까맹이'}</p>
 				</div>
 				<span class="date"><FormattedDateShort date={entry.data.pubDate} /></span>
 			</a>
 		))}
 	</section>
 </PageLayout>
+
+<style>
+	.entry-meta {
+		margin: 0.75rem 0 0;
+		font-size: 0.9rem;
+		color: rgb(var(--gray));
+	}
+</style>
