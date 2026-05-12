@@ -31,6 +31,7 @@ const notes = defineCollection({
 	schema: baseSchema.extend({
 		project: z.string().optional(),
 		status: z.enum(['idea', 'active', 'paused', 'done']).optional(),
+		author: z.string().default('까맹이'),
 	}),
 });
 
