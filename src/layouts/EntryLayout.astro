@@ -14,9 +14,10 @@ interface Props {
 	sectionLabel?: string;
 	coverImage?: string;
 	coverAlt?: string;
+	author?: string;
 }
 
-const { title, description, pubDate, updatedDate, tags = [], sectionLabel, coverImage, coverAlt } = Astro.props;
+const { title, description, pubDate, updatedDate, tags = [], sectionLabel, coverImage, coverAlt, author } = Astro.props;
 ---
 
 <!doctype html>
@@ -39,6 +40,7 @@ const { title, description, pubDate, updatedDate, tags = [], sectionLabel, cover
 					<p class="description">{description}</p>
 					<div class="meta">
 						<span><FormattedDate date={pubDate} /></span>
+						{author && <span>글쓴이 {author}</span>}
 						{updatedDate && <span>업데이트 <FormattedDate date={updatedDate} /></span>}
 					</div>
 					{
